@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<app-profile></app-profile>
+<div class="container col-md-12 text-center" style="background-color: brown;">
+  <div class="jumbotron jumbotron-fluid col-md-12">
+    <h1>GITHUB SEARCH</h1>
+  </div>
+  <div class="row col-md-12">
+    <div class="col-md-4" *ngIf="myProfileInfo">
+        <blockquote class="blockquote text-center" style="padding: 15px;">
+          <img src="{{myProfileInfo.avatar_url}}" width="100%">
+          <p class="mb-0" style="padding: none; margin: none; border:none;" *ngIf="myProfileInfo.login">Username: {{ myProfileInfo.login }}</p>
+          <p class="mb-0" style="padding: none; margin: none; border:none;" *ngIf="myProfileInfo.email">My email: <a href="{{ myProfileInfo.email }}">{{ myProfileInfo.email }}</a></p>
+          <footer class="blockquote-footer" *ngIf="myProfileInfo.name"><cite>My name is: {{ myProfileInfo.name }}</cite> <cite *ngIf="myProfileInfo.location"> From: {{ myProfileInfo.location }}</cite></footer>
+          <p *ngIf="myProfileInfo.blog">Checkout my portfolio blog here: <a href="{{myProfileInfo.blog}}">{{myProfileInfo.blog}}</a></p>
+          <p *ngIf="myProfileInfo.company">Current working status: {{myProfileInfo.company}}</p>
+          <p *ngIf="myProfileInfo.bio">Bio: {{myProfileInfo.bio}}</p>
+          <p *ngIf="myProfileInfo.public_repos">Number of public repos: {{myProfileInfo.public_repos}}</p>
+          <p *ngIf="myProfileInfo.public_gists">Number of public gists: {{myProfileInfo.public_gists}}</p>
+          <p *ngIf="myProfileInfo.hireable">Status: <span class="badge badge-primary">Available for hire!</span></p>
+          <p><a href="https://github.com/Wenslaus-Makumba" target="_blank"><span class="badge badge-success">Check profile out on GitHub &nbsp; <i class="fa fa-external-link" aria-hidden="true"></i></span></a></p>
+        </blockquote>
+    </div>
+    <div class="col-md-5">
+      <h1>Repos</h1>
+      <div *ngFor="let repo of repos">
+        <p>
+          {{repo.name}} <a href="{{repo.html_url}}" target="_blank">Click to View this project on github</a>
+        </p>
+        <p>{{repo.description}}</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <h1>Form</h1>
+      <input type="text" id="username" placeholder="Enter GitHub Username">
+      <br>
+      <button class="btn btn-sm btn-success">Search project/Repo</button>
+    </div>
+  </div>
+</div>
